@@ -52,6 +52,13 @@ Exam_questions.q1.shortest_word = function (word_array) {
  * @example sum_of_numbers(["hello", "cat", 2, true, 17, undefined]) // 19;
  */
 Exam_questions.q2.sum_of_numbers = function (array_of_any_type) {
+    let sum = 0;
+    for (let i = 0; i < array_of_any_type.length; i++){
+        if (typeof array_of_any_type[i] === 'number' && !Number.isNaN(array_of_any_type[i])){
+            sum += array_of_any_type[i];
+        }
+    }
+    return sum
 };
 
 /**
@@ -76,6 +83,16 @@ Exam_questions.q2.sum_of_numbers = function (array_of_any_type) {
  *   // "never odd or even"
  */
 Exam_questions.q3.longest_palindrome = function (string_array) {
+    let longestLength = 0;
+    let longestPalindrome;
+    for (let i = 0; i< string_array.length; i++){
+        let joint = string_array[i].replaceAll(' ', '');
+        if (joint === joint.split('').reverse().join('') && joint.length > longestLength){
+            longestLength = joint.length;
+            longestPalindrome = string_array[i]
+        }
+    }
+    return longestPalindrome;
 };
 
 /**
@@ -90,6 +107,13 @@ Exam_questions.q3.longest_palindrome = function (string_array) {
  * @example perfect_squares(2, 16) // [4, 9, 16]
  */
 Exam_questions.q4.perfect_squares = function (a, b) {
+    let squares = [];
+    for(let i = a; i < b + 1; i++){
+        if (Number.isInteger(Math.sqrt(i))){
+            squares.push(i);
+        }
+    }
+    return squares
 };
 
 /**
@@ -106,6 +130,15 @@ Exam_questions.q4.perfect_squares = function (a, b) {
  *   // {"numbers": [1, 3, 5, 6], "powers": [1, 9, 25, 36]}
  */
 Exam_questions.q5.power_object = function (numbers, exponent) {
+    let object = {
+        'numbers': [],
+        'powers': [],
+    }
+    for (let i = 0; i < numbers.length; i++){
+        object['numbers'].push(numbers[i]);
+        object['powers'].push(Math.pow(numbers[i], exponent));
+    }
+    return object;
 };
 
 /**
@@ -124,6 +157,15 @@ Exam_questions.q5.power_object = function (numbers, exponent) {
  * @example missing_character("hello", "hellonn") // undefined
  */
 Exam_questions.q6.missing_character = function (short_string, long_string) {
+    let chars1 = short_string.split('');
+    let chars2 = long_string.split('');
+    for (let letter of chars1) {
+        let index = chars2.indexOf(letter);
+        if (index === -1) return undefined; // mismatch
+        chars2.splice(index, 1); // remove matched character
+    }
+
+    return chars2.length === 1 ? chars2[0] : undefined;
 };
 
 /**
@@ -138,6 +180,17 @@ Exam_questions.q6.missing_character = function (short_string, long_string) {
  * @example even_digits(2, 27) // [2, 4, 6, 8, 20, 22, 24, 26]
  */
 Exam_questions.q7.even_digits = function (a, b) {
+    let list = [];
+
+    for (let i = a; i <= b; i++) {
+        let digits = String(i).split('');
+        let allEven = digits.every(d => d % 2 === 0);
+        if (allEven) {
+            list.push(i);
+        }
+    }
+
+    return list;
 };
 
 /**

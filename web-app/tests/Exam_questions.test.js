@@ -311,7 +311,16 @@ describe("Question 6", function () {
         "that is not included in the orignal string, " +
         "returns that character",
         function () {
-            throw new Error("Implement this test yourself.");
+            const short_string = 'hello';
+            const long_string = 'hellon';
+            const result = missing_character(short_string, long_string);
+            const expected = 'n';
+            if (!R.equals(result, expected)){
+                throw new Error(
+                    `For an input of ${long_string}, ${result} was returned,` +
+                    `when ${expected} was expected`
+                )
+            }
         }
     );
 
@@ -322,17 +331,35 @@ describe("Question 6", function () {
         "that is included in the orignal string, " +
         "returns that character",
         function () {
-            throw new Error("Implement this test yourself.");
+         const short_string = 'hello';
+         const long_string = 'hellol';
+         const result = missing_character(short_string, long_string);
+         const expected = 'l';
+         if (!R.equals(result, expected)){
+            throw new Error(
+                `For an input of ${long_string}, ${result} was returned,` +
+                `when ${expected} was expected`
+                )   
         }
+    }
     );
 
     it(
         "Given a string and a character, " +
         "appending that character to the string and shuffling" +
-        "then passing the original and new string to missing_character",
+        "then passing the original and new string to missing_character" +
         "returns that character",
         function () {
-            throw new Error("Implement this test yourself.");
+            const short_string = 'hello';
+            const long_string = 'leholn';
+            const result = missing_character(short_string, long_string);
+            const expected = 'n';
+            if(!R.equals(result, expected)) {
+                throw new Error (
+                    `For an input of ${long_string}, ${result} was returned,` +
+                    `when ${expected} was expected`
+                )
+            }
         }
     );
 
@@ -340,7 +367,16 @@ describe("Question 6", function () {
         "Given two strings with lengths that differ by not exactly 1," +
         "undefined is always returned",
         function () {
-            throw new Error("Implement this test yourself.");
+            const short_string = 'hello';
+            const long_string = 'hellolpk';
+            const result = missing_character(short_string, long_string);
+            const expected = undefined;
+            if (!R.equals(result, expected)){
+                throw new Error(
+                    `For an input of ${long_string}, ${result} was returned,` +
+                    `when ${expected} was expected`
+                    )
+            }
         }
     );
 });
@@ -348,11 +384,40 @@ describe("Question 6", function () {
 const even_digits = Exam_questions.q7.even_digits;
 describe("Question 7", function () {
     it(
-        "Define and implement your own tests for this question",
+        "Given two numbers, output the numbers within the range with only even digits",
         function () {
-            throw new Error(
-                "Define and implement your own tests for this question"
-            );
+            const a = 3;
+            const b = 24;
+            const result = even_digits(a, b);
+            const expected = [4,6,8,20,22,24];
+            if (!R.equals(result, expected)){
+                throw new Error(
+                    `For an input of ${a} and ${b}, ${result} was returned,` +
+                    `when ${expected} was expected`
+                )
+            }
         }
+    
     );
 });
+
+const age_question = Exam_questions.q8.age_question;
+describe("Question 8", function () {
+    it(
+        "Given a name and age, return the string 'Hello (name), is your age (age)?",
+        function (){
+            const name = 'Andrea';
+            const age = 19;
+            const result = age_question(name, age);
+            const expected = "Hello Andrea, is your age 19?"
+            if (!R.equals(result, expected)) {
+                throw new Error(
+                    `For an input of ${name} and ${age}, ${result} was returned,` +
+                    `when ${expected} was expected`
+                )
+            }
+        }
+
+    )
+}
+)
